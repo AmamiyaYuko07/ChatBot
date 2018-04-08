@@ -1,0 +1,12 @@
+D:\VSWORK\ChatBot\ChatBot\bin\Debug\data\txts\test.txt
+D:\VSWORK\ChatBot\ChatBot\bin\Debug\ChatBot.exe.config
+D:\VSWORK\ChatBot\ChatBot\bin\Debug\ChatBot.exe
+D:\VSWORK\ChatBot\ChatBot\bin\Debug\ChatBot.pdb
+D:\VSWORK\ChatBot\ChatBot\bin\Debug\JiebaNet.Analyser.dll
+D:\VSWORK\ChatBot\ChatBot\bin\Debug\JiebaNet.Segmenter.dll
+D:\VSWORK\ChatBot\ChatBot\bin\Debug\Newtonsoft.Json.dll
+D:\VSWORK\ChatBot\ChatBot\bin\Debug\Newtonsoft.Json.xml
+D:\VSWORK\ChatBot\ChatBot\obj\Debug\ChatBot.csprojResolveAssemblyReference.cache
+D:\VSWORK\ChatBot\ChatBot\obj\Debug\ChatBot.csproj.CoreCompileInputs.cache
+D:\VSWORK\ChatBot\ChatBot\obj\Debug\ChatBot.exe
+D:\VSWORK\ChatBot\ChatBot\obj\Debug\ChatBot.pdb

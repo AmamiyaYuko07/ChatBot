@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<setting>
+  <property>
+    <item name="name" value="阿尔法" />
+    <item name="age" value="永远的十七" />
+  </property>
+  <config>
+    <item name="server" value="." />
+    <item name="port" value="3306" />
+    <item name="username" value="root" />
+    <item name="password" value="" />
+    <item name="database" value="" />
+    <item name="Threshold" value="0.25" />
+    <item name="MaxThreshold" value="0.5" />
+  </config>
+</setting>

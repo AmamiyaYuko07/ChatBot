@@ -21,7 +21,7 @@ namespace ChatBot.Parser
         public TextParser(string txtPath = @"data\txts")
         {
             this.txtPath = txtPath;
-            this.customPath = Path.Combine(txtPath, "custom", "custom.txt");
+            this.customPath = Path.Combine(txtPath, "custom.txt");
         }
 
         public int[] Parse(string text)
@@ -44,28 +44,12 @@ namespace ChatBot.Parser
 
         public void Save(IModel model)
         {
-            //先读取自定义文件的所有数据
-            var ms = new TextParser(Path.GetDirectoryName(this.customPath)).Start();
-            var m = ms.Where(x => x.Text == model.Text).FirstOrDefault();
-            if(m != null)
+            using (StreamWriter sw = new StreamWriter(this.customPath, true))
             {
-                var temp = m.Answers.ToList();
-                temp.AddRange(model.Answers);
-                m.Answers = temp.Distinct().ToArray();
-            }
-            else
-            {
-                ms.Add(model);
-            }
-            using (StreamWriter sw = new StreamWriter(this.customPath, false))
-            {
-                foreach(var c in ms)
+                sw.WriteLine(model.Text);
+                foreach (var x in model.Answers)
                 {
-                    sw.WriteLine(c.Text);
-                    foreach (var x in c.Answers)
-                    {
-                        sw.WriteLine("    " + x);
-                    }
+                    sw.WriteLine("    " + x);
                 }
             }
         }
@@ -77,10 +61,6 @@ namespace ChatBot.Parser
         public List<IModel> Start()
         {
             List<IModel> models = new List<IModel>();
-            foreach(var x in new DirectoryInfo(Path.GetDirectoryName(this.customPath)).GetFiles("*.txt"))
-            {
-                x.CopyTo(Path.Combine(this.txtPath, x.Name), true);
-            }
             foreach (var path in Directory.GetFiles(this.txtPath, "*.txt"))
             {
                 using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))

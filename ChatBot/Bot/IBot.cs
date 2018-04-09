@@ -103,7 +103,7 @@ namespace ChatBot.Bot
                     resultModel = x;
                 }
             }
-            if(max > 0.3)
+            if(max > 0.1)
             {
                 return resultModel;
             }

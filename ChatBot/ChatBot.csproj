@@ -62,7 +62,9 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="data\txts\output.txt" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="data\txts\test.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

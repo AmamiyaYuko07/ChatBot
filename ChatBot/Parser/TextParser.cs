@@ -77,6 +77,10 @@ namespace ChatBot.Parser
         public List<IModel> Start()
         {
             List<IModel> models = new List<IModel>();
+            foreach(var x in new DirectoryInfo(Path.GetDirectoryName(this.customPath)).GetFiles("*.txt"))
+            {
+                x.CopyTo(Path.Combine(this.txtPath, x.Name), true);
+            }
             foreach (var path in Directory.GetFiles(this.txtPath, "*.txt"))
             {
                 using (FileStream fs = new FileStream(path, FileMode.Open, FileAccess.Read))
@@ -84,7 +88,7 @@ namespace ChatBot.Parser
                     using (StreamReader sr = new StreamReader(fs, Encoding.UTF8))
                     {
                         var str = "";
-                        var model = new IModel();
+                        List<IModel> theModels = new List<IModel>();
                         List<string> answers = new List<string>();
                         while ((str = sr.ReadLine()) != null)
                         {
@@ -96,19 +100,28 @@ namespace ChatBot.Parser
                             {
                                 if (answers.Count > 0)
                                 {
-                                    model.Answers = answers.ToArray();
+                                    foreach(var x in theModels)
+                                    {
+                                        x.Answers = answers.ToArray();
+                                        models.Add(x);
+                                    }
                                     answers.Clear();
-                                    models.Add(model);
+                                    theModels.Clear();
                                 }
+                                var model = new IModel();
                                 model = new IModel();
                                 model.Text = str;
                                 model.Hash = Parse(str);
+                                theModels.Add(model);
                             }
                         }
                         if(answers.Count > 0)
                         {
-                            model.Answers = answers.ToArray();
-                            models.Add(model);
+                            foreach (var x in theModels)
+                            {
+                                x.Answers = answers.ToArray();
+                                models.Add(x);
+                            }
                         }
                     }
                 }
